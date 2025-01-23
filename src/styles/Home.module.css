@@ -1,0 +1,333 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&family=Raleway:wght@600&family=Roboto&display=swap');
+
+.homebody {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  z-index: 0;
+}
+
+.homebody::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../images/IMG-20250121-WA0004.jpg") center/cover no-repeat;
+  filter: blur(3px);
+  z-index: -1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background: transparent;
+  z-index: 1;
+}
+
+/* Hero Section */
+.hero {
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 150px 20px;
+  border-radius: 15px;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  transition: background-image 1s ease-in-out;
+}
+
+.heroContent {
+  transition: opacity 1s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 1;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: rgb(79, 8, 83);
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  font-size: 1.75rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: rgb(79, 8, 83);
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.primaryBtn, .secondaryBtn {
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.secondaryBtn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.primaryBtn:hover {
+  background: white;
+  color: #6a11cb;
+  transform: translateY(-5px);
+}
+
+.secondaryBtn:hover {
+  background: white;
+  color: #6a11cb;
+  transform: translateY(-5px);
+}
+
+/* How It Works Section */
+.howItWorks {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.howItWorks h2 {
+  font-size: 2.75rem;
+  margin-bottom: 40px;
+  font-family: 'Raleway', sans-serif;
+  color: #5ef675;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.step {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stepIcon {
+  width: 60px;
+  height: 60px;
+  background: white;
+  color: #6a11cb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 20px;
+}
+
+.step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.step p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Featured Listings Section */
+.featured {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.featured h2 {
+  font-size: 2.75rem;
+  margin-bottom: 40px;
+  font-family: 'Raleway', sans-serif;
+  color: #5ef675;
+}
+
+.listings {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.listingCard {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.listingCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.listingCard img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.listingCard h3 {
+  font-size: 1.25rem;
+  margin: 15px 0 10px;
+  padding: 0 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.listingCard p {
+  font-size: 1rem;
+  color: #666;
+  padding: 0 15px 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* About Us Section */
+.aboutUs {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border-radius: 15px;
+}
+
+.aboutUs h2 {
+  font-size: 2.75rem;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+  color: #333;
+}
+
+.aboutContent {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+}
+
+.aboutText {
+  flex: 1;
+}
+
+.aboutText p {
+  font-size: 1.2rem;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.aboutImage {
+  flex: 1;
+  max-width: 50%;
+}
+
+.aboutImage img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Contact Info Section */
+.contactInfo {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 60px 20px;
+  background: #f9f9f9;
+  border-radius: 15px;
+}
+
+.contactInfo h2 {
+  font-size: 2.75rem;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+  color: #333;
+}
+
+.contactInfo p {
+  font-size: 1.2rem;
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

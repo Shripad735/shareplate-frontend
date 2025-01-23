@@ -1,0 +1,885 @@
+/* General Styles */
+/* .dashboard {
+  padding: 40px;
+  background: linear-gradient(135deg, rgba(189, 151, 230, 0.8), rgba(138, 183, 225, 0.8));
+  border-radius: 15px; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  color: white;
+}   */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@700&display=swap');
+
+
+.dashboard {
+  padding: 2rem;
+  background: 
+    linear-gradient(135deg, 
+      rgba(204, 153, 255, 0.9) 0%,
+      rgba(179, 136, 255, 0.9) 100%),
+    url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="3"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.4"/></svg>');
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 0 32px rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dashboard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 25px,
+      transparent 25px,
+      transparent 50px
+    );
+  animation: grain 8s linear infinite;
+  pointer-events: none;
+}
+
+.dashboard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  z-index: -1;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0) }
+  100% { transform: translate(70%, 70%) }
+}
+
+.dashboard:hover {
+  box-shadow: 
+    0 12px 48px rgba(0, 0, 0, 0.2),
+    inset 0 0 48px rgba(255, 255, 255, 0.15);
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+
+.dashboard:hover {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Dynamic border highlight */
+.dashboard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+}
+
+.dashboard:hover {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+  
+  .dashboard::before {
+    animation-duration: 12s;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: rgb(233, 250, 135);
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 2px 2px 4px #0e100def;
+}
+
+.header p {
+  font-size: 1.50rem;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(233, 250, 135);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.957);
+}
+
+.content {
+  margin-bottom: 40px;
+}
+
+/* Statistics Overview */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* .statCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 245, 245, 0.9));
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.statCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+.statCard p {
+  font-size: 2rem;
+  color: #6a11cb;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+} */
+
+.statCard {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.1),
+    0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex: 1;
+  min-width: 240px;
+  max-width: 320px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-out;
+}
+
+.statCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 35px rgba(0, 0, 0, 0.1),
+    0 10px 15px rgba(0, 0, 0, 0.05);
+}
+
+.statCard:hover::before {
+  transform: scaleX(1);
+}
+
+.statCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+  color: #1f2937;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  position: relative;
+  z-index: 1;
+}
+
+.statCard p {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover p {
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.statCard.highlight {
+  animation: pulse 2s infinite;
+}
+
+/* Create Listing Form */
+/* Form Container */
+.form {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 
+    0 20px 40px rgba(106, 17, 203, 0.08),
+    0 10px 20px rgba(37, 117, 252, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(106, 17, 203, 0.1);
+ }
+ 
+ /* Animated background gradient */
+ .form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc, #6a11cb);
+  background-size: 200% 100%;
+  animation: gradientMove 3s linear infinite;
+ }
+ 
+ @keyframes gradientMove {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+ }
+ 
+ /* Form Title */
+ .form h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  letter-spacing: -0.025em;
+  position: relative;
+ }
+ 
+ .form h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border-radius: 2px;
+ }
+ 
+ /* Form Groups */
+ .formGroup {
+  margin-bottom: 25px;
+  position: relative;
+ }
+ 
+ /* Enhanced Input Fields */
+ .form input {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid rgba(106, 17, 203, 0.1);
+  border-radius: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  color: #2d3748;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.9);
+ }
+ 
+ .form input::placeholder {
+  color: #a0aec0;
+  transition: all 0.3s ease;
+ }
+ 
+ .form input:hover {
+  border-color: rgba(106, 17, 203, 0.3);
+  background: rgba(255, 255, 255, 1);
+ }
+ 
+ .form input:focus {
+  outline: none;
+  border-color: #6a11cb;
+  box-shadow: 
+    0 0 0 4px rgba(106, 17, 203, 0.1),
+    0 4px 12px rgba(106, 17, 203, 0.1);
+  transform: translateY(-2px);
+ }
+ 
+ .form input:focus::placeholder {
+  opacity: 0.7;
+  transform: translateX(5px);
+ }
+ 
+ /* Enhanced Button */
+ .form button {
+  width: 100%;
+  padding: 16px 30px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: 10px;
+ }
+ 
+ .form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+ }
+ 
+ .form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 20px rgba(106, 17, 203, 0.2),
+    0 4px 10px rgba(37, 117, 252, 0.15);
+ }
+ 
+ .form button:hover::before {
+  opacity: 1;
+ }
+ 
+ .form button:active {
+  transform: translateY(-1px);
+ }
+ 
+ .form button:disabled {
+  background: linear-gradient(135deg, #cbd5e0, #e2e8f0);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+ }
+ 
+ .form button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+ }
+ 
+ /* Animation for form appearance */
+ @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+ }
+ 
+ .form {
+  animation: fadeInUp 0.6s ease-out forwards;
+ }
+ 
+ /* Responsive adjustments */
+ @media (max-width: 768px) {
+  .form {
+    padding: 30px 20px;
+    margin: 0 15px;
+  }
+  
+  .form h2 {
+    font-size: 2rem;
+  }
+ }
+
+/* Active Listings Container */
+.listings {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+/* Enhanced Title */
+.darkTitle {
+  color: #1a1a2e;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.darkTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border-radius: 2px;
+}
+
+/* Listing Card Container */
+.listingCard {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 20px rgba(106, 17, 203, 0.05),
+    0 4px 8px rgba(37, 117, 252, 0.05);
+  margin-bottom: 25px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(106, 17, 203, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.listingCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-out;
+}
+
+.listingCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 40px rgba(106, 17, 203, 0.1),
+    0 8px 16px rgba(37, 117, 252, 0.1);
+}
+
+.listingCard:hover::before {
+  transform: scaleX(1);
+}
+
+/* Card Content Layout */
+.listingContent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Enhanced Image */
+.listingImage {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.listingCard:hover .listingImage {
+  transform: scale(1.05);
+}
+
+/* Card Information */
+.listingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.listingCard h3 {
+  font-size: 1.75rem;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.listingCard p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.listingCard p strong {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+/* Enhanced Button */
+.listingCard button {
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.listingCard button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.listingCard button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(106, 17, 203, 0.2);
+}
+
+.listingCard button:hover::before {
+  opacity: 1;
+}
+
+/* Animation for card appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.listingCard {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Input Fields */
+.inputField {
+  display: block;
+  width: 80%; /* Reduced width */
+  max-width: 400px; /* Uniform width */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: black;
+  transition: all 0.3s ease;
+  margin: 0 auto 15px; /* Centered and uniform spacing */
+}
+
+/* Sidebar Styles */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  padding: 10px 20px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.sidebar button:hover {
+  background: #592580;
+  transform: translateY(-2px);
+}
+
+.sidebar button.active {
+  background: #592580;
+}
+
+/* Main Content Styles */
+.mainContent {
+  margin-top: 20px;
+}
+
+.reservationsSection,
+.listingsSection,
+.createListingSection,
+.statisticsSection {
+  margin-bottom: 40px;
+}
+
+/* Reservation Card Container */
+.reservationCard {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 25px rgba(106, 17, 203, 0.08),
+    0 5px 10px rgba(37, 117, 252, 0.05);
+  margin-bottom: 25px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 30px;
+  align-items: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(106, 17, 203, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient border animation */
+.reservationCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #6a11cb, #2575fc);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s ease-out;
+}
+
+.reservationCard:hover {
+  transform: translateX(5px);
+  box-shadow: 
+    0 15px 35px rgba(106, 17, 203, 0.12),
+    0 8px 16px rgba(37, 117, 252, 0.08);
+}
+
+.reservationCard:hover::before {
+  transform: scaleY(1);
+}
+
+/* Enhanced Image */
+.reservationCard img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.reservationCard:hover img {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Content */
+.reservationCard h3 {
+  font-size: 1.75rem;
+  margin-bottom: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.025em;
+  transition: all 0.3s ease;
+}
+
+.reservationCard:hover h3 {
+  transform: translateX(5px);
+}
+
+.reservationCard p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.reservationCard p strong {
+  color: #2d3748;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.reservationCard p strong::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.reservationCard:hover p strong::after {
+  transform: scaleX(1);
+}
+
+/* Enhanced Pickup Button */
+.pickupBtn {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.pickupBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pickupBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 6px 15px rgba(106, 17, 203, 0.2),
+    0 2px 5px rgba(37, 117, 252, 0.1);
+}
+
+.pickupBtn:hover::before {
+  opacity: 1;
+}
+
+.pickupBtn:active {
+  transform: translateY(-1px);
+}
+
+/* Animation for card appearance */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reservationCard {
+  animation: slideInFromRight 0.6s ease-out forwards;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reservationCard {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .reservationCard img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+  
+  .pickupBtn {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+.logoutButton {
+  padding: 10px 20px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.logoutButton:hover {
+  background: #2575fc;
+  transform: translateY(-2px);
+}

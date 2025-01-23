@@ -1,0 +1,473 @@
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --background-gradient: linear-gradient(135deg, rgba(204, 153, 255, 0.8), rgba(179, 136, 255, 0.8));
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+}
+
+.dashboard {
+  padding: 40px;
+  background: var(--background-gradient);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.05);
+  color: var(--text-dark);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.05), 
+    transparent
+  );
+  transform: rotate(-45deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  font-family: 'Inter', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+}
+
+.header h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.header h1:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar button {
+  padding: 12px 24px;
+  background: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+}
+
+.sidebar button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  transition: all 0.4s ease;
+}
+
+.sidebar button:hover::before {
+  left: 100%;
+}
+
+.sidebar button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
+}
+
+.sidebar button.active {
+  background: #592580;
+  box-shadow: 0 8px 20px rgba(37, 117, 252, 0.4);
+}
+
+.mainContent {
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .sidebar {
+    gap: 10px;
+  }
+
+  .sidebar button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+.usersSection,
+.listingsSection,
+.reservationsSection,
+.analyticsSection {
+  margin-bottom: 40px;
+}
+
+.userTable,
+.reservationTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 16px;
+  box-shadow: 
+    0 15px 30px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.04);
+  color: #1f2937;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.userTable th,
+.reservationTable th {
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+  color: white;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+}
+
+.userTable td,
+.reservationTable td {
+  padding: 16px 24px;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.userTable tr:nth-child(even),
+.reservationTable tr:nth-child(even) {
+  background-color: rgba(139, 92, 246, 0.05);
+}
+
+.userTable tr:hover,
+.reservationTable tr:hover {
+  background-color: rgba(139, 92, 246, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+.userTable tr:last-child td,
+.reservationTable tr:last-child td {
+  border-bottom: none;
+}
+
+.userTable tr:first-child th:first-child,
+.reservationTable tr:first-child th:first-child {
+  border-top-left-radius: 16px;
+}
+
+.userTable tr:first-child th:last-child,
+.reservationTable tr:first-child th:last-child {
+  border-top-right-radius: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .userTable,
+  .reservationTable {
+    font-size: 0.875rem;
+  }
+
+  .userTable th,
+  .reservationTable th {
+    padding: 12px 16px;
+    font-size: 0.75rem;
+  }
+
+  .userTable td,
+  .reservationTable td {
+    padding: 12px 16px;
+  }
+}
+
+:root {
+  --primary-color: #6a11cb;
+  --secondary-color: #2575fc;
+  --background-color: #f4f6f9;
+  --card-background: rgba(255, 255, 255, 0.95);
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+}
+
+.listingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  background-color: linear-gradient(135deg, rgba(204, 153, 255, 0.8), rgba(179, 136, 255, 0.8));;
+}
+
+.listingCard {
+  background: var(--card-background);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: var(--text-dark);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+.listingCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.listingCard:hover::before {
+  transform: scaleX(1);
+}
+
+.listingCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.12),
+    0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.listingImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.listingCard:hover .listingImage {
+  transform: scale(1.05);
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.statCard {
+  background: var(--card-background);
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex: 1;
+  min-width: 220px;
+  max-width: 350px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::after {
+  content: '';
+  position: absolute;
+  bottom: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg, 
+    transparent, 
+    rgba(106, 17, 203, 0.1), 
+    transparent
+  );
+  transform: rotate(-45deg);
+  transition: transform 0.6s ease;
+}
+
+.statCard:hover::after {
+  transform: rotate(45deg);
+}
+
+.statCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-light);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.statCard p {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.statCard p::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+
+.statCard:hover p::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.charts {
+  display: flex;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.chart {
+  flex: 1;
+  background: var(--card-background);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+}
+
+.chart:hover {
+  transform: scale(1.02);
+}
+
+.logoutButton, button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
+}
+
+.logoutButton::before, button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  transition: all 0.4s ease;
+}
+
+.logoutButton:hover::before, button:hover::before {
+  left: 100%;
+}
+
+.logoutButton:hover, button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
+}
+
+.logoutButton {
+  background: linear-gradient(135deg, #ff4d4d, #ff1a1a);
+  box-shadow: 0 5px 15px rgba(255, 77, 77, 0.3);
+  /* i want to keep it at right corner */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
