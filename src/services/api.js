@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  // baseURL: 'http://localhost:9000/',
-  baseURL: 'https://shareplate-backend-brv517daq-shripad-khandares-projects.vercel.app',
+  baseURL: 'https://shareplate-backend-ckyoa0709-shripad-khandares-projects.vercel.app',
   withCredentials: true, // Include cookies
 });
 
