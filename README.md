@@ -227,7 +227,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Shripad Deshmukh**  
 - Email: shripad.khandare@mitaoe.com  
 - GitHub: [Shripad735](https://github.com/Shripad735)  
-- LinkedIn: [Shripad Deshmukh](https://www.linkedin.com/in/shripad-khandare-39a2a2203/)
+- LinkedIn: [Shripad Khandare](https://www.linkedin.com/in/shripad-khandare-39a2a2203/)
 
 ---
 
