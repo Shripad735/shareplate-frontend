@@ -11,32 +11,28 @@ import { useNavigate } from 'react-router-dom';
 const RestaurantDashboard = () => {
   const { enqueueSnackbar } = useSnackbar();
   const [reservations, setReservations] = useState([]);
-  const [listings, setListings] = useState([]); // Add this line
+  const [listings, setListings] = useState([]);
   const [activeSection, setActiveSection] = useState('reservations');
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchReservations();
-    fetchListings(); // Call fetchListings on component mount
+    fetchListings();
   }, []);
 
   // Fetch reservations for the restaurant
   const fetchReservations = async () => {
     try {
-      const listingsResponse = await api.get(`/api/food-listings/restaurant`);
+      const listingsResponse = await api.get('/api/food-listings/restaurant');
       const listings = listingsResponse.data;
       const listingIds = listings.map((listing) => listing._id);
-      const reservationsResponse = await api.get(`/api/reservations/by-listings`, {
+      const reservationsResponse = await api.get('/api/reservations/by-listings', {
         params: { listingIds: listingIds.join(',') },
       });
       setReservations(reservationsResponse.data);
     } catch (error) {
-      if(listings.length === 0) {
-        enqueueSnackbar('No active listings found. Please create a listing to view reservations.', { variant: 'info' });
-      } else {
       console.error('Error fetching reservations:', error);
       enqueueSnackbar('Error fetching reservations', { variant: 'error' });
-      }
     }
   };
 
@@ -47,7 +43,7 @@ const RestaurantDashboard = () => {
       const activeListings = response.data.filter(
         (listing) => listing.status !== 'completed' && listing.status !== 'picked_up'
       );
-      setListings(activeListings); // Use setListings here
+      setListings(activeListings);
     } catch (error) {
       console.error('Error fetching listings:', error);
       enqueueSnackbar('Error fetching listings. Please try again.', { variant: 'error' });
@@ -59,8 +55,8 @@ const RestaurantDashboard = () => {
     try {
       await api.put(`/api/reservations/${reservationId}/pickup`);
       enqueueSnackbar('Reservation marked as picked up', { variant: 'success' });
-      fetchReservations(); // Refresh the reservations list
-      fetchListings(); // Refresh the active listings
+      fetchReservations();
+      fetchListings();
     } catch (error) {
       enqueueSnackbar('Error marking reservation as picked up', { variant: 'error' });
     }
