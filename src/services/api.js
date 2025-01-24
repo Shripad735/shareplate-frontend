@@ -2,7 +2,11 @@ import axios from 'axios';
 
 const api = axios.create({
   baseURL: 'https://shareplate-backend.vercel.app',
-  withCredentials: true, // Include cookies
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  }
 });
 
 api.interceptors.request.use(
