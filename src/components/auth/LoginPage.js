@@ -19,28 +19,34 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (isLoading) return; // Prevent multiple submissions
-
+  
     setIsLoading(true); // Set loading state to true
-
+  
     try {
-      // const response = await fetch('http://localhost:9000/api/auth/login', {
-        const response = await fetch('https://shareplate-backend.vercel.app/api/auth/login', {
+      const response = await fetch('https://shareplate-backend.vercel.app/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // Include cookies
         body: JSON.stringify(formData),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         enqueueSnackbar('Login successful!', { variant: 'success' });
-
+  
+        // Save the token to localStorage
+        localStorage.setItem('token', data.token); // Add this line
+  
         // Store user data in local storage
         localStorage.setItem('user', JSON.stringify(data.user));
-
+  
+        // Debug: Log the token and user data
+        console.log('Token saved to localStorage:', localStorage.getItem('token'));
+        console.log('User data saved to localStorage:', localStorage.getItem('user'));
+  
         // Redirect based on userType
         if (data.user.userType === 'restaurant') {
           navigate('/dashboard'); // Redirect to restaurant dashboard
