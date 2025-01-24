@@ -26,7 +26,7 @@ const LoginPage = () => {
 
     try {
       // const response = await fetch('http://localhost:9000/api/auth/login', {
-        const response = await fetch('https://shareplate-backend-ckyoa0709-shripad-khandares-projects.vercel.app/api/auth/login', {
+        const response = await fetch('https://shareplate-backend.vercel.app/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include', // Include cookies

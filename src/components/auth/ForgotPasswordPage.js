@@ -14,7 +14,7 @@ const ForgotPasswordPage = () => {
   const handleSendOTP = async () => {
     try {
       // const response = await fetch('http://localhost:9000/api/auth/forgot-password', {
-        const response = await fetch('https://shareplate-backend-ckyoa0709-shripad-khandares-projects.vercel.app/api/auth/forgot-password', {
+        const response = await fetch('https://shareplate-backend.vercel.app/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -36,7 +36,7 @@ const ForgotPasswordPage = () => {
   const handleValidateOTP = async () => {
     try {
       // const response = await fetch('http://localhost:9000/api/auth/validate-otp', {
-        const response = await fetch('https://shareplate-backend-ckyoa0709-shripad-khandares-projects.vercel.app/api/auth/validate-otp', {
+        const response = await fetch('https://shareplate-backend.vercel.app/api/auth/validate-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp }),
@@ -58,7 +58,7 @@ const ForgotPasswordPage = () => {
   const handleResetPassword = async () => {
     try {
       // const response = await fetch('http://localhost:9000/api/auth/reset-password', {
-        const response = await fetch('https://shareplate-backend-ckyoa0709-shripad-khandares-projects.vercel.app/api/auth/reset-password', {
+        const response = await fetch('https://shareplate-backend.vercel.app/api/auth/reset-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, newPassword }),
